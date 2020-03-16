@@ -1,5 +1,5 @@
 <?php
-class energytype
+class Energytype
 {
     public $name;
 
@@ -7,6 +7,7 @@ class energytype
     public function __construct($typename) {
         $this->name = $typename;
     }
+
 }
 
 ?>

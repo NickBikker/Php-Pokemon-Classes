@@ -1,14 +1,13 @@
 <?php
-class resistance
+class Resistance
 {
-    public $name;
     public $energytype;
-    public $hitpoint;
-    public $health;
-    public $weakness;
-    public $resistance;
+    public $value;
+ 
 
-    public function __construct() {
+    public function __construct($energyType, $Value) {
+        $this->energytype = $energyType;
+        $this->value = $Value;
         
     }
 }

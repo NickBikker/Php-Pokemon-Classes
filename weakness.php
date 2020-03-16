@@ -1,15 +1,14 @@
 <?php
-class weakness
+class Weakness
 {
-    public $name;
-    public $energytype;
-    public $hitpoint;
-    public $health;
-    public $weakness;
-    public $resistance;
 
-    public function __construct() {
-        
+    public $energytype;
+    public $multiplier;
+
+
+    public function __construct($Energytype, $multipliervalue) {
+        $this->energytype = $Energytype;
+        $this->multiplier = $multipliervalue;
     }
 }
 

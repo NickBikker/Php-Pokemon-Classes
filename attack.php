@@ -1,15 +1,13 @@
 <?php
-class attack
+class Attack
 {
     public $name;
-    public $energytype;
-    public $hitpoint;
-    public $health;
-    public $weakness;
-    public $resistance;
+    public $damage;
 
-    public function __construct() {
-        
+
+    public function __construct($attackName, $damageNumber) {
+        $this->name = $attackName;
+        $this->damage = $damageNumber;
     }
 }
 
