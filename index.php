@@ -6,6 +6,7 @@ require 'attack.php';
 require 'resistance.php';
 require 'datalayer.php';
 
+
 $energytypes = [
     'lightning' => new Energytype("Lightning"),
     'fire' => new Energytype("Fire"),
@@ -52,21 +53,45 @@ $pokedex = createallpokemon();
 <body>
     <div class="container mt-5">
         <div class="row">
-            <div class="col-md-6">
+            <div class="col-md-4">
                 <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
                     Pokemon maken
                 </button>
             </div>
-            <div class="col-md-6">
-               <?php $pokedex['Charmeleon']->attack($pokedex['Pikachu'], $pokedex['Charmeleon']->attack[1]); ?><br>
-                <?php $pokedex['Pikachu']->attack($pokedex['Charmeleon'], $pokedex['Pikachu']->attack[1]); ?> 
+            <div class="col-md-4">
+                <?php $pokedex['Charmeleon']->attack($pokedex['Pikachu'], $pokedex['Charmeleon']->attack[1]); ?><br>
+                <?php $pokedex['Pikachu']->attack($pokedex['Charmeleon'], $pokedex['Pikachu']->attack[1]); ?>
             </div>
+            <div class="col-md-4">
+                <?php $pokedex['Charmeleon']->attack($pokedex['Pikachu'], $pokedex['Charmeleon']->attack[1]); ?><br>
+                <?php $pokedex['Pikachu']->attack($pokedex['Charmeleon'], $pokedex['Pikachu']->attack[1]); ?>
+            </div>
+
         </div>
         <div class="row">
             <div class="col-md-12">
-                <?php foreach ($pokedex as $pokemon) {
-                    $pokemon->getPopulation();
-                } ?>
+                <table class="table table-dark">
+                    <thead>
+                        <tr>
+                            <th scope="col">Name</th>
+                            <th scope="col">Edit</th>
+                            <th scope="col">Delete</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                            <?php
+                            foreach($pokedex as $pokemon) {?>
+                                <tr>
+                                    <td>
+                                        <?=$pokemon->name?>
+                                    </td>
+                                    <td><a href="edit.php?id=<?=$pokemon->databaseid;?>" class="btn btn-warning">Edit</a></td>
+                                    <td><a href="delete.php?id=<?=$pokemon->databaseid;?>" class="btn btn-danger">Delete</a></td>
+                                </tr>
+                            <?php }
+                             ?>
+                    </tbody>
+                </table>
             </div>
         </div>
     </div>
@@ -81,7 +106,7 @@ $pokedex = createallpokemon();
                 </div>
                 <div class="modal-body">
 
-                    <form method="post" action="insert.php?action=Insertinto">
+                    <form method="post" action="function.php?action=Insertinto">
                         <div class="form-group">
                             <label for="name">name</label>
                             <input type="text" class="form-control" id="name" name="name">
