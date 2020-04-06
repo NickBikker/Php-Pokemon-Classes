@@ -1,10 +1,14 @@
 <?php
-require 'pokemon.php';
-require 'energytype.php';
-require 'weakness.php';
-require 'attack.php';
-require 'resistance.php';
+// require 'pokemon.php';
+// require 'energytype.php';
+// require 'weakness.php';
+// require 'attack.php';
+// require 'resistance.php';
 require 'datalayer.php';
+
+spl_autoload_register(function ($class_name) {
+    require  strtolower($class_name)  . '.php';
+});
 
 
 $energytypes = [
@@ -38,6 +42,7 @@ $energytypes = [
 
 $pokedex = createallpokemon();
 
+echo Pokemon::Pokemonsmikkelsmakkel();
 ?>
 
 <!DOCTYPE html>
@@ -83,7 +88,7 @@ $pokedex = createallpokemon();
                             foreach($pokedex as $pokemon) {?>
                                 <tr>
                                     <td>
-                                        <?=$pokemon->name?>
+                                        <?=$pokemon->GetName()?>
                                     </td>
                                     <td><a href="edit.php?id=<?=$pokemon->databaseid;?>" class="btn btn-warning">Edit</a></td>
                                     <td><a href="delete.php?id=<?=$pokemon->databaseid;?>" class="btn btn-danger">Delete</a></td>

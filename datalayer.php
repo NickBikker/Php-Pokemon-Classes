@@ -41,7 +41,7 @@ function createallpokemon()
 
         if (!empty($result)) {
             foreach ($result as $pokemon) {
-                $pokedex[$pokemon['name']] = new Pokemon(
+                $pokedex[$pokemon['name']] = new Pokemon2(
                     $pokemon['id'],
                     '' . $pokemon['name'] . '',
                     new Energytype("" . $pokemon['energytype'] . ""),
