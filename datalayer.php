@@ -5,7 +5,7 @@ function openDatabaseConnection()
 {
     $servername = "localhost";
     $username = "root";
-    $password = "mysql";
+    $password = "";
 
 
     try {
@@ -22,7 +22,7 @@ function openDatabaseConnection()
 function Insertinto($data)
 {
     $conn = openDatabaseConnection();
-    $query = $conn->prepare("INSERT INTO `pokemon stats` (name, energytype, health, attack_1, attack_1_damage, attack_2, attack_2_damage, weakness, weakness_multiplier, resistance, resistance_value ) VALUES ('" . implode("','", $data) . "')");
+    $query = $conn->prepare("INSERT INTO `pokemons` (name, energytype, health, attack_1, attack_1_damage, attack_2, attack_2_damage, weakness, weakness_multiplier, resistance, resistance_value ) VALUES ('" . implode("','", $data) . "')");
     $query->execute();
     echo '<script>window.location="index.php"</script>';
     $conn = null;
@@ -32,7 +32,7 @@ function createallpokemon()
 {
 
     $conn = openDatabaseConnection();
-    $query = $conn->prepare("SELECT * FROM `pokemon stats`");
+    $query = $conn->prepare("SELECT * FROM `pokemons`");
 
     if ($query->execute()) {
         $result = $query->fetchAll();
@@ -41,7 +41,7 @@ function createallpokemon()
 
         if (!empty($result)) {
             foreach ($result as $pokemon) {
-                $pokedex[$pokemon['name']] = new Pokemon2(
+                $pokedex[$pokemon['name']] = new Pokemon(
                     $pokemon['id'],
                     '' . $pokemon['name'] . '',
                     new Energytype("" . $pokemon['energytype'] . ""),
@@ -64,7 +64,7 @@ function createallpokemon()
 function getpokemonfromid($id)
 {
     $conn = openDatabaseConnection();
-    $query = $conn->prepare("SELECT * FROM `pokemon stats` WHERE id = :id");
+    $query = $conn->prepare("SELECT * FROM `pokemons` WHERE id = :id");
 
     if ($query->execute([':id' => $id])) {
         $result = $query->fetch();
@@ -79,7 +79,7 @@ function getpokemonfromid($id)
 function updatePokemon($data)
 {
     $conn = openDatabaseConnection();
-    $query = $conn->prepare('UPDATE `pokemon stats` SET name = :name, energytype = :energytype, health = :health, attack_1 = :attack1,
+    $query = $conn->prepare('UPDATE `pokemons` SET name = :name, energytype = :energytype, health = :health, attack_1 = :attack1,
      attack_1_damage = :attack1damage, attack_2 = :attack2, attack_2_damage = :attack2damage, weakness = :weakness,
       weakness_multiplier = :weaknessmultiplier, resistance = :resistance, resistance_value = :resistancevalue WHERE id = :id');
 
@@ -100,7 +100,7 @@ function updatePokemon($data)
 
 function deletePokemon($data) {
     $conn = openDatabaseConnection();
-    $query = $conn->prepare('DELETE FROM `pokemon stats` WHERE id = :id');
+    $query = $conn->prepare('DELETE FROM `pokemons` WHERE id = :id');
     $query->execute([':id'=>$data['id']]);
     $conn = null;
     $message = "welloe broer goeie hij doet het";

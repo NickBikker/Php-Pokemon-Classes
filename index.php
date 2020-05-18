@@ -64,12 +64,12 @@ echo Pokemon::Pokemonsmikkelsmakkel();
                 </button>
             </div>
             <div class="col-md-4">
-                <?php $pokedex['Charmeleon']->attack($pokedex['Pikachu'], $pokedex['Charmeleon']->attack[1]); ?><br>
-                <?php $pokedex['Pikachu']->attack($pokedex['Charmeleon'], $pokedex['Pikachu']->attack[1]); ?>
+                <?php $pokedex['Charmeleon']->attack($pokedex['Pikachu'], $pokedex['Charmeleon']->Getattack(1)); ?><br>
+                <?php $pokedex['Pikachu']->attack($pokedex['Charmeleon'], $pokedex['Pikachu']->Getattack(1)); ?>
             </div>
             <div class="col-md-4">
-                <?php $pokedex['Charmeleon']->attack($pokedex['Pikachu'], $pokedex['Charmeleon']->attack[1]); ?><br>
-                <?php $pokedex['Pikachu']->attack($pokedex['Charmeleon'], $pokedex['Pikachu']->attack[1]); ?>
+                <?php $pokedex['Charmeleon']->attack($pokedex['Pikachu'], $pokedex['Charmeleon']->Getattack(1)); ?><br>
+                <?php $pokedex['Pikachu']->attack($pokedex['Charmeleon'], $pokedex['Pikachu']->Getattack(1)); ?>
             </div>
 
         </div>
@@ -90,8 +90,8 @@ echo Pokemon::Pokemonsmikkelsmakkel();
                                     <td>
                                         <?=$pokemon->GetName()?>
                                     </td>
-                                    <td><a href="edit.php?id=<?=$pokemon->databaseid;?>" class="btn btn-warning">Edit</a></td>
-                                    <td><a href="delete.php?id=<?=$pokemon->databaseid;?>" class="btn btn-danger">Delete</a></td>
+                                    <td><a href="edit.php?id=<?=$pokemon->Getdbid();?>" class="btn btn-warning">Edit</a></td>
+                                    <td><a href="delete.php?id=<?=$pokemon->Getdbid();?>" class="btn btn-danger">Delete</a></td>
                                 </tr>
                             <?php }
                              ?>
