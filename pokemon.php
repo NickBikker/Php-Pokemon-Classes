@@ -12,121 +12,131 @@ class Pokemon
 
     public function __construct($databaseid, $pokemonName, $EnergyType, $Hitpoints, $Attacks, $Weakness, $Resistance) {
         $this->databaseid = $databaseid;
-        $this->name = $this->setName($pokemonName);
-        $this->energytype = $this->setenergytype($EnergyType);
+        $this->name = $pokemonName;
+        $this->energytype = $EnergyType;
         $this->hitpoint = $Hitpoints;
         $this->health = $this->hitpoint;
         $this->attack = $Attacks;
-        $this->weakness = $this->setweakness($Weakness);
-        $this->resistance = $this->setresistance($Resistance);
+        $this->weakness = $Weakness;
+        $this->resistance = $Resistance;
     }
 
     public function setName($PokemonName){
         $this->name = $PokemonName;
-        return $this->name;
+       
     }
 
-    public function sethealth(){
-        $this->health = $this->hitpoint;
-        return $this->health;
+    public function sethealth($Hitpoints){
+        $this->health = $Hitpoints;
+        
 
     }
 
     public function setenergytype($EnergyType){
         $this->energytype = $EnergyType;
-        return $this->energytype;
+        
     }
 
     public function setdatabaseid($databaseid){
         $this->databaseid = $databaseid;
-        return $this->databaseid;
+        
     }
 
     public function setattack($Attacks){
         $this->attack = $Attacks;
-        return $this->attack;
+        
     }
 
     public function setweakness($Weakness){
         $this->weakness = $Weakness;
-        return $this->weakness;
+        
     }
 
     public function setresistance($Resistance){
         $this->resistance = $Resistance;
-        return $this->resistance;
+        
     }
 
-    public function Getdbid(){
+    public function getDbid(){
         return $this->databaseid;
     }
 
 
-    public function GetName(){
+    public function getName(){
         return $this->name;
         
     }
 
-    public function Getenergytype(){
+    public function getEnergytype(){
         return $this->energytype;
         
     }
 
-    public function Getattack($i){
+    public function getAttack($i){
         return $this->attack[$i];
         
     }
 
-    public function Getweakness(){
+    public function getWeakness(){
         return $this->weakness;
     }
 
-    public function Getresistnace(){
+    public function getResistance(){
         return $this->resistance;
         
     }
+
+    public function getHealth(){
+        return $this->health;
+    }
+
+
+
 
     static function Pokemonsmikkelsmakkel() {
         return "Welcome to Pokemon(the fucked up version)";
     }
 
     public function attack($target, $attack){
+
+        $smikkel = '';
        
 
        
-        if ($target->health <= 0) {
-            $target->health = 0;
-           echo $target->name.' is dood <br>';
+        if ($target->getHealth() <= 0) {
+            $target->sethealth(0);
+           $smikkel .= $target->getName().' is dood <br>';
         }else{
         
         
                     $finaldamage = '';
                     
-                    if ($target->weakness->energytype->name == $this->energytype->name) {
-                        $finaldamage = $attack->damage * $target->weakness->multiplier;
+                    if ($target->getWeakness()->getEnergytype()->getName() == $this->energytype->getName()) {
+                        $finaldamage = $attack->getDamage() * $target->getWeakness()->getMultiplier();
                         
                     }else{
-                        $finaldamage = $attack->damage;
-                        if($this->energytype->name == $target->resistance->energytype->name){
-                            $finaldamage = $attack->damage - $target->resistance->value;
+                        $finaldamage = $attack->getDamage();
+                        if($this->energytype->getName() == $target->getResistance()->getEnergytype()->getName()){
+                            $finaldamage = $attack->getDamage() - $target->getResistance()->getValue();
                         }
                     }
-                    echo $target->name. "'s remainging health: ".$target->health."<br>";
-                    echo 'pokemon '.$this->name.' doet '.$attack->name.' en levert '.$finaldamage.' damage aan '.$target->name.'<br>' ;
+                    $smikkel .= $target->getName(). "'s remainging health: ".$target->getHealth()."<br>";
+                    $smikkel .= 'pokemon '.$this->name.' doet '.$attack->getName().' en levert '.$finaldamage.' damage aan '.$target->getName().'<br>' ;
         
         
-                    $target->health = $target->health - $finaldamage;
-                    if ($target->health <= 0) {
-                        $target->health = 0;
-                        echo $target->name.' is dood';
+                    $target->setHealth($target->getHealth() - $finaldamage);
+                    if ($target->getHealth() <= 0) {
+                        $target->setHealth(0);
+                        $smikkel .= $target->getName().' is dood';
                     }else{
-                        echo $target->name. "'s remainging health: ".$target->health."<br>";
+                        $smikkel .= $target->getName(). "'s remainging health: ".$target->getHealth()."<br>";
                     }
                     
                     
         
                     
                 }
+                return $smikkel;
             }
     
 

@@ -43,6 +43,7 @@ $energytypes = [
 $pokedex = createallpokemon();
 
 echo Pokemon::Pokemonsmikkelsmakkel();
+var_dump($pokedex['Charmeleon']->getHealth())
 ?>
 
 <!DOCTYPE html>
@@ -64,12 +65,12 @@ echo Pokemon::Pokemonsmikkelsmakkel();
                 </button>
             </div>
             <div class="col-md-4">
-                <?php $pokedex['Charmeleon']->attack($pokedex['Pikachu'], $pokedex['Charmeleon']->Getattack(1)); ?><br>
-                <?php $pokedex['Pikachu']->attack($pokedex['Charmeleon'], $pokedex['Pikachu']->Getattack(1)); ?>
+                <?php echo $pokedex['Charmeleon']->attack($pokedex['Pikachu'], $pokedex['Charmeleon']->Getattack(1)); ?><br>
+                <?php echo $pokedex['Pikachu']->attack($pokedex['Charmeleon'], $pokedex['Pikachu']->Getattack(1)); ?>
             </div>
             <div class="col-md-4">
-                <?php $pokedex['Charmeleon']->attack($pokedex['Pikachu'], $pokedex['Charmeleon']->Getattack(1)); ?><br>
-                <?php $pokedex['Pikachu']->attack($pokedex['Charmeleon'], $pokedex['Pikachu']->Getattack(1)); ?>
+                <?php echo $pokedex['Charmeleon']->attack($pokedex['Pikachu'], $pokedex['Charmeleon']->Getattack(1)); ?><br>
+                <?php echo $pokedex['Pikachu']->attack($pokedex['Charmeleon'], $pokedex['Pikachu']->Getattack(1)); ?>
             </div>
 
         </div>
@@ -121,7 +122,7 @@ echo Pokemon::Pokemonsmikkelsmakkel();
                             <select class="form-control" id="energytype" name="energytype">
                                 <?php
                                 foreach ($energytypes as $energytype) { ?>
-                                    <option value='<?= $energytype->name ?>'><?= $energytype->name ?></option>
+                                    <option value='<?= $energytype->getName() ?>'><?= $energytype->getName() ?></option>
                                 <?php } ?>
                             </select>
                         </div>
@@ -163,7 +164,7 @@ echo Pokemon::Pokemonsmikkelsmakkel();
                                 <select class="form-control" id="weakness" name="weakness">
                                     <?php
                                     foreach ($energytypes as $energytype) { ?>
-                                        <option value='<?= $energytype->name ?>'><?= $energytype->name ?></option>
+                                        <option value='<?= $energytype->getName() ?>'><?= $energytype->getName() ?></option>
                                     <?php } ?>
                                 </select>
                             </div>
@@ -180,7 +181,7 @@ echo Pokemon::Pokemonsmikkelsmakkel();
                                 <select class="form-control" id="resistance" name="resistance">
                                     <?php
                                     foreach ($energytypes as $energytype) { ?>
-                                        <option value='<?= $energytype->name ?>'><?= $energytype->name ?></option>
+                                        <option value='<?= $energytype->getName() ?>'><?= $energytype->getName() ?></option>
                                     <?php } ?>
                                 </select>
                             </div>
