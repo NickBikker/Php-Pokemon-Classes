@@ -43,7 +43,7 @@ $energytypes = [
 $pokedex = createallpokemon();
 
 echo Pokemon::Pokemonsmikkelsmakkel();
-var_dump($pokedex['Charmeleon']->getHealth())
+var_dump($pokedex['Charmeleon'])
 ?>
 
 <!DOCTYPE html>

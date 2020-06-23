@@ -111,7 +111,7 @@ class Pokemon
         
                     $finaldamage = '';
                     
-                    if ($target->getWeakness()->getEnergytype()->getName() == $this->energytype->getName()) {
+                    if ($target->getWeakness()->getName() == $this->energytype->getName()) {
                         $finaldamage = $attack->getDamage() * $target->getWeakness()->getMultiplier();
                         
                     }else{

@@ -1,19 +1,16 @@
 <?php
-class Weakness
+class Weakness extends Energytype
 {
 
-    private $energytype;
+  
     private $multiplier;
 
 
     public function __construct($Energytype, $multipliervalue) {
-        $this->energytype = $Energytype;
+        $this->name = $Energytype;
         $this->multiplier = $multipliervalue;
     }
 
-    public function getEnergytype(){
-        return $this->energytype;
-    }
 
     public function getMultiplier(){
         return $this->multiplier;

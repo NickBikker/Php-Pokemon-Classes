@@ -47,7 +47,7 @@ function createallpokemon()
                     new Energytype("" . $pokemon['energytype'] . ""),
                     $pokemon['health'],
                     [new Attack('' . $pokemon['attack_1'] . '', $pokemon['attack_1_damage']), new Attack('' . $pokemon['attack_2'] . '', $pokemon['attack_2_damage'])],
-                    new Weakness(new Energytype("" . $pokemon['weakness'] . ""), $pokemon['weakness_multiplier']),
+                    new Weakness("" . $pokemon['weakness'] . "", $pokemon['weakness_multiplier']),
                     new Resistance(new Energytype("" . $pokemon['resistance'] . ""), $pokemon['resistance_value'])
 
                 );

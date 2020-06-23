@@ -1,7 +1,7 @@
 <?php
 class Energytype
 {
-    private $name;
+    public $name;
 
 
     public function __construct($typename) {
